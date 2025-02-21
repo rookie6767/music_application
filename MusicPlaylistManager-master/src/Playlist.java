@@ -20,32 +20,6 @@ public class Playlist {
         this.head = null;
     }
 
-    // Method to add a song to the playlist
-    public void addSong(Song song) {
-        SongNode newNode = new SongNode(song); // Create a new SongNode with the given song
-        if (head == null) {
-            head = newNode; // If the playlist is empty, set the new node as the head
-        } else {
-            SongNode current = head;
-            while (current.getNext() != null) {
-                current = current.getNext(); // Traverse to the last node in the playlist
-            }
-            current.setNext(newNode); // Link the new node to the last node
-        }
-
-        totalDuration += song.getDuration(); // Update total duration
-        numberOfSongs++; // Increment the count of songs
-    }
-
-    // Method to remove a song from the playlist
-    public void removeSong(Song song) {
-        if (songs.contains(song)) {
-            songs.remove(song);
-            totalDuration -= song.getDuration();
-            numberOfSongs--; // Decrement the count of songs
-        }
-    }
-
     // Method to get all songs on the playlist
     public void showPlaylist() {
         int minutes = totalDuration / 60;

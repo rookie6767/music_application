@@ -40,17 +40,6 @@ public class SongCatalog {
         }
     }
 
-    // Method to search for songs by title
-    public List<Song> searchByTitle(String title) {
-        List<Song> result = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getTitle().equalsIgnoreCase(title)) {
-                result.add(song);
-            }
-        }
-        return result;
-    }
-
     // Method to search for songs by artist
     public List<Song> searchByArtist(String artistName) {
         Artist artist = getArtist(artistName);
