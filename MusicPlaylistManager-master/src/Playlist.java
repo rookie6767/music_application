@@ -20,6 +20,43 @@ public class Playlist {
         this.head = null;
     }
 
+    public void addSong(Song node) {
+        SongNode songNode = new SongNode(node);
+        if (head == null) {
+            head = songNode;
+        } else {
+            SongNode current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(songNode);
+        }
+        songs.add(node);
+        numberOfSongs++;
+        totalDuration += node.getDuration();
+    }
+
+    public void removeSong(Song song) {
+        if (songs.remove(song)) {
+            numberOfSongs--;
+            totalDuration -= song.getDuration();
+
+            // Update the linked list
+            if (head != null && head.getSong().equals(song)) {
+                head = head.getNext();
+            } else {
+                SongNode current = head;
+                while (current != null && current.getNext() != null) {
+                    if (current.getNext().getSong().equals(song)) {
+                        current.setNext(current.getNext().getNext());
+                        break;
+                    }
+                    current = current.getNext();
+                }
+            }
+        }
+    }
+
     // Method to get all songs on the playlist
     public void showPlaylist() {
         int minutes = totalDuration / 60;
