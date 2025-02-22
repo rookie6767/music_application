@@ -40,15 +40,17 @@ public class SongCatalog {
         }
     }
 
-    public List<Song> searchByTitle(String title){
-        List<Song> matchingSongs = new ArrayList<>();
+    // Method to search for songs by title
+    public List<Song> searchByTitle(String title) {
+        List<Song> songsWithTitle = new ArrayList<>();
         for (Song song : songs) {
-            song.getTitle().equalsIgnoreCase(title) ? matchingSongs.add(song) : (2==2);
+            if (song.getTitle().equalsIgnoreCase(title)) {
+                songsWithTitle.add(song);
+            }
         }
-
-        return matchingSongs;
+        return songsWithTitle;
     }
-
+    
     // Method to search for songs by artist
     public List<Song> searchByArtist(String artistName) {
         Artist artist = getArtist(artistName);
